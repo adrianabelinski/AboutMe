@@ -12,6 +12,9 @@
 		C6B8871728FCDEFA00BB6079 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B8871628FCDEFA00BB6079 /* ViewController.swift */; };
 		C6B8871C28FCDEFD00BB6079 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6B8871B28FCDEFD00BB6079 /* Assets.xcassets */; };
 		C6B8871F28FCDEFD00BB6079 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B8871D28FCDEFD00BB6079 /* LaunchScreen.storyboard */; };
+		C6B8878129022BA300BB6079 /* Comfortaa_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8877E29022BA300BB6079 /* Comfortaa_Bold.ttf */; };
+		C6B8878229022BA300BB6079 /* Comfortaa_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8877F29022BA300BB6079 /* Comfortaa_Regular.ttf */; };
+		C6B8878329022BA300BB6079 /* Comfortaa_Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6B8878029022BA300BB6079 /* Comfortaa_Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		C6B8871B28FCDEFD00BB6079 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6B8871E28FCDEFD00BB6079 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6B8872028FCDEFD00BB6079 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6B8877E29022BA300BB6079 /* Comfortaa_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa_Bold.ttf; sourceTree = "<group>"; };
+		C6B8877F29022BA300BB6079 /* Comfortaa_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa_Regular.ttf; sourceTree = "<group>"; };
+		C6B8878029022BA300BB6079 /* Comfortaa_Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa_Thin.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		C6B8871128FCDEFA00BB6079 /* AboutMe */ = {
 			isa = PBXGroup;
 			children = (
+				C6B887752902276300BB6079 /* Fonts */,
 				C6B8871228FCDEFA00BB6079 /* AppDelegate.swift */,
 				C6B8871428FCDEFA00BB6079 /* SceneDelegate.swift */,
 				C6B8871628FCDEFA00BB6079 /* ViewController.swift */,
@@ -62,6 +69,16 @@
 				C6B8872028FCDEFD00BB6079 /* Info.plist */,
 			);
 			path = AboutMe;
+			sourceTree = "<group>";
+		};
+		C6B887752902276300BB6079 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C6B8877E29022BA300BB6079 /* Comfortaa_Bold.ttf */,
+				C6B8877F29022BA300BB6079 /* Comfortaa_Regular.ttf */,
+				C6B8878029022BA300BB6079 /* Comfortaa_Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +140,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B8871F28FCDEFD00BB6079 /* LaunchScreen.storyboard in Resources */,
+				C6B8878129022BA300BB6079 /* Comfortaa_Bold.ttf in Resources */,
+				C6B8878329022BA300BB6079 /* Comfortaa_Thin.ttf in Resources */,
+				C6B8878229022BA300BB6079 /* Comfortaa_Regular.ttf in Resources */,
 				C6B8871C28FCDEFD00BB6079 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

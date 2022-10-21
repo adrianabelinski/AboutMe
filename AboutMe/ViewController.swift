@@ -36,7 +36,10 @@ class ViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Adriana Belinski"
     label.textAlignment = .center
-    label.font = UIFont(name: "SF-Compact", size: 24)
+    //label.font = UIFont.systemFont(ofSize: 22, weight: .heavy)
+    label.font = UIFont(name: "Comfortaa-Bold", size: 25)
+    label.textColor = UIColor(named: "Orange")
+  
     return label
   }()
   
@@ -75,6 +78,8 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
     
     view.backgroundColor = UIColor(named: "Biege")
     
@@ -123,7 +128,7 @@ class ViewController: UIViewController {
     view.addSubview(name)
     
     NSLayoutConstraint.activate([
-      name.topAnchor.constraint(equalTo: myPhotoView.bottomAnchor, constant: 20),
+      name.topAnchor.constraint(equalTo: myPhotoView.bottomAnchor, constant: 15),
       name.leadingAnchor.constraint(equalTo: coloredBlock.leadingAnchor, constant: 63),
       name.trailingAnchor.constraint(equalTo: coloredBlock.trailingAnchor, constant: -63),
     ])
