@@ -79,12 +79,38 @@ class ViewController: UIViewController {
     return imageView
   }()
   
+  let twitterLinkLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    
+    let attributedString = NSMutableAttributedString(string: "https://twitter.com/AdrianaMPLS")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
+    
+    label.font = UIFont(name: "Comfortaa-Bold", size: 12)
+    label.textColor = UIColor(named: "Orange")
+    return label
+  }()
+
   let linkedInIconImageView: UIImageView = {
     let image = UIImage(named: "LinkedInIcon")
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = image
     return imageView
+  }()
+  
+  let linkedInLinkLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    
+    let attributedString = NSMutableAttributedString(string: "https://www.linkedin.com/in/adrianabelinski")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
+    
+    label.font = UIFont(name: "Comfortaa-Bold", size: 12)
+    label.textColor = UIColor(named: "Orange")
+    return label
   }()
   
   //Start of likes section
@@ -195,6 +221,7 @@ class ViewController: UIViewController {
     setUpLocationLabel()
     setUpLine()
     setUpTwitterIconImageView()
+    setUpTwitterLinkLabel()
     setUpLinkedInIconImageView()
     setUpLikesSection()
     setUpThingsILoveLabel()
@@ -282,6 +309,16 @@ class ViewController: UIViewController {
     ])
   }
   
+  func setUpTwitterLinkLabel() {
+    locationAndLinksView.addSubview(twitterLinkLabel)
+    
+    NSLayoutConstraint.activate([
+      twitterLinkLabel.topAnchor.constraint(equalTo: locationAndLinksView.topAnchor, constant: 50),
+      twitterLinkLabel.leadingAnchor.constraint(equalTo: twitterIconImageView.leadingAnchor, constant: 25),
+      twitterLinkLabel.heightAnchor.constraint(equalToConstant: 18),      twitterIconImageView.widthAnchor.constraint(equalToConstant: 18),
+    ])
+  }
+  
   func setUpLinkedInIconImageView() {
     locationAndLinksView.addSubview(linkedInIconImageView)
     
@@ -292,6 +329,16 @@ class ViewController: UIViewController {
     ])
   }
   
+
+  func setUpLinkedInLabel() {
+    locationAndLinksView.addSubview(linkedInLinkLabel)
+    
+    NSLayoutConstraint.activate([
+      linkedInLinkLabel.topAnchor.constraint(equalTo: twitterLinkLabel.topAnchor, constant: 50),
+      linkedInLinkLabel.leadingAnchor.constraint(equalTo: linkedInIconImageView.leadingAnchor, constant: 25),
+    ])
+  }
+
   func setUpLikesSection() {
     view.addSubview(likesSectionView)
     
