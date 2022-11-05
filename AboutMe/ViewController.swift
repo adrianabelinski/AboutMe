@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
   
+  
+  
   // MARK: - Properties
   
   let coloredBlock: UIView = {
@@ -21,10 +23,7 @@ class ViewController: UIViewController {
   }()
 
   let myPhotoView: UIImageView = {
-    
     let image = UIImage(named: "1")
-  //  image.cornerRadius = 20
-    
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = image
@@ -35,11 +34,13 @@ class ViewController: UIViewController {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Adriana Belinski"
+    let attributedString = NSMutableAttributedString(string: "Adriana Belinski")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
     label.textAlignment = .center
     //label.font = UIFont.systemFont(ofSize: 22, weight: .heavy)
-    label.font = UIFont(name: "Comfortaa-Bold", size: 25)
+    label.font = UIFont(name: "Comfortaa-Bold", size: 23)
     label.textColor = UIColor(named: "Orange")
-  
     return label
   }()
   
@@ -48,6 +49,30 @@ class ViewController: UIViewController {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = UIColor(named: "Sunny")
     return view
+  }()
+  
+  let linksAndLocation: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    //label.text = "📍 Maple Grove, MN"
+    let attributedString = NSMutableAttributedString(string: "📍 Maple Grove, MN")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
+    label.font = UIFont(name: "Comfortaa-Bold", size: 15)
+    label.textColor = UIColor(named: "Orange")
+    return label
+  }()
+  
+  let line: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.backgroundColor = UIColor(named: "Biege")
+    return view
+  }()
+  
+  let twitterIcon: UIImage = {
+    let image = UIImage()
+    return image
   }()
   
   let likesSection: UIView = {
@@ -64,23 +89,51 @@ class ViewController: UIViewController {
     return view
   }()
   
+  let introToCodingTitle: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "I like iOS Development because..."
+    let attributedString = NSMutableAttributedString(string: "I like iOS Development because...")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
+    label.font = UIFont(name: "Comfortaa-Bold", size: 15)
+    label.textColor = UIColor(named: "Orange")
+    return label
+  }()
+  
+  let introToCodingParagraph: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "I wanted to learn programming so I learned some Swift through online tutorials and games. I then purchased some books and finally, I joined a 10-week coding academy where I learned SwiftUI. I especially like the community of iOS developers, and I'm hoping that I can use both my eye for design and my coding skills to create fun and useful apps to be used by others around the world."
+    
+    /*let attributedString = NSMutableAttributedString(string: "I like iOS Development because...")
+    attributedString.addAttribute(.kern, value: 5, range: NSRange(location: 0, length: attributedString.length - 1))*/
+    
+    label.lineBreakMode = .byWordWrapping
+    label.numberOfLines = 0
+    label.font = UIFont(name: "Comfortaa-Bold", size: 10)
+    label.textColor = UIColor(named: "Orange")
+    return label
+  }()
+  
   let sayHello: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.backgroundColor = UIColor(named: "Orange")
     button.layer.cornerRadius = 20
+    button.addTarget(self, action: #selector(submitButtonPressed), for: .touchUpInside)
     button.setTitle("Say Hello! 👋", for: .normal)
     return button
   }()
+  
+  
   
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
-    
+
     view.backgroundColor = UIColor(named: "Biege")
     
     setUpUI()
@@ -97,9 +150,15 @@ class ViewController: UIViewController {
     setUpMyPhoto()
     setUpName()
     setUpLinksColoredBlock()
+    setUpLine()
+    //setUpTwitterIcon()
+   // setUpLinkedInIcon()
     setLikesSection()
-    setIntroToCodingSection()
+    setUpIntroToCodingSection()
+    setUpIntroToCodingTitle()
+    setUpIntroToCodingParagraph()
     setUpSayHello()
+    setUpLinksAndLocation()
   }
   
   func setUpColoredBlock() {
@@ -146,6 +205,46 @@ class ViewController: UIViewController {
     ])
   }
   
+  func setUpLinksAndLocation() {
+    view.addSubview(linksAndLocation)
+    NSLayoutConstraint.activate([
+      linksAndLocation.topAnchor.constraint(equalTo: linksColoredBlock.topAnchor, constant: 13),
+      linksAndLocation.leadingAnchor.constraint(equalTo: linksColoredBlock.leadingAnchor, constant: 10),
+      linksAndLocation.trailingAnchor.constraint(equalTo: linksColoredBlock.trailingAnchor, constant: -10),
+    ])
+  }
+  
+  func setUpLine() {
+    view.addSubview(line)
+    
+    NSLayoutConstraint.activate([
+      line.topAnchor.constraint(equalTo: linksColoredBlock.topAnchor, constant: 40),
+      line.bottomAnchor.constraint(equalTo: linksColoredBlock.bottomAnchor, constant: -58),
+
+      line.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+      line.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+      line.heightAnchor.constraint(equalToConstant: 100),
+    ])
+  }
+  /*
+  func SetUpTwitterIcon() {
+    view.addSubview(twitterIcon)
+    
+    NSLayoutConstraint.activate([
+      twitterIcon.topAnchor.constraint(equalTo: linksColoredBlock.topAnchor, constant: 40),
+      twitterIcon.bottomAnchor.constraint(equalTo: linksColoredBlock.bottomAnchor, constant: -58),
+
+      twitterIcon.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+      twitterIcon.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+      twitterIcon.heightAnchor.constraint(equalToConstant: 100),
+    ])
+  }
+  
+  func SetUpTwitterIcon() {
+    view.addSubview(linkedInIcon)
+    
+  }
+   */
   
   func setLikesSection() {
     view.addSubview(likesSection)
@@ -154,18 +253,38 @@ class ViewController: UIViewController {
       likesSection.topAnchor.constraint(equalTo: linksColoredBlock.bottomAnchor, constant: 20),
       likesSection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
       likesSection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-      likesSection.heightAnchor.constraint(equalToConstant: 75),
+      likesSection.heightAnchor.constraint(equalToConstant: 60),
     ])
   }
   
-  func setIntroToCodingSection() {
+  func setUpIntroToCodingSection() {
     view.addSubview(introToCodingSection)
     
     NSLayoutConstraint.activate([
       introToCodingSection.topAnchor.constraint(equalTo: likesSection.bottomAnchor, constant: 20),
       introToCodingSection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
       introToCodingSection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-      introToCodingSection.heightAnchor.constraint(equalToConstant: 100),
+      introToCodingSection.heightAnchor.constraint(equalToConstant: 130),
+    ])
+  }
+  
+  func setUpIntroToCodingTitle() {
+    view.addSubview(introToCodingTitle)
+    
+    NSLayoutConstraint.activate([
+      introToCodingTitle.topAnchor.constraint(equalTo: introToCodingSection.topAnchor, constant: 13),
+      introToCodingTitle.leadingAnchor.constraint(equalTo: introToCodingSection.leadingAnchor, constant: 10),
+      introToCodingTitle.trailingAnchor.constraint(equalTo: introToCodingSection.trailingAnchor, constant: -10),
+    ])
+  }
+  
+  func setUpIntroToCodingParagraph() {
+    view.addSubview(introToCodingParagraph)
+    
+    NSLayoutConstraint.activate([
+      introToCodingParagraph.topAnchor.constraint(equalTo: introToCodingSection.topAnchor, constant: 37),
+      introToCodingParagraph.leadingAnchor.constraint(equalTo: introToCodingSection.leadingAnchor, constant: 10),
+      introToCodingParagraph.trailingAnchor.constraint(equalTo: introToCodingSection.trailingAnchor, constant: -10),
     ])
   }
   
@@ -179,6 +298,20 @@ class ViewController: UIViewController {
       sayHello.heightAnchor.constraint(equalToConstant: 75),
     ])
   }
+  
+  
+  @objc func submitButtonPressed(){
+    
+    let alertController = UIAlertController(title: "Hey there! It's nice to meet you.", message: nil, preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  /*
+  @objc func buttonPressed() {
+    print("Push up pressed")
+  }
+  */
   
 }
 
