@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     
     let attributedString = NSMutableAttributedString(string: "https://twitter.com/AdrianaMPLS")
-    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    attributedString.addAttribute(.kern, value: 0.5, range: NSRange(location: 0, length: attributedString.length - 1))
     label.attributedText = attributedString
     
     label.font = UIFont(name: "Comfortaa-Bold", size: 12)
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     
     let attributedString = NSMutableAttributedString(string: "https://www.linkedin.com/in/adrianabelinski")
-    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    attributedString.addAttribute(.kern, value: 0.5, range: NSRange(location: 0, length: attributedString.length - 1))
     label.attributedText = attributedString
     
     label.font = UIFont(name: "Comfortaa-Bold", size: 12)
@@ -223,6 +223,7 @@ class ViewController: UIViewController {
     setUpTwitterIconImageView()
     setUpTwitterLinkLabel()
     setUpLinkedInIconImageView()
+    setUpLinkedInLinkLabel()
     setUpLikesSection()
     setUpThingsILoveLabel()
     setUpFavoriteFoodLabel()
@@ -292,7 +293,6 @@ class ViewController: UIViewController {
     NSLayoutConstraint.activate([
       line.topAnchor.constraint(equalTo: locationAndLinksView.topAnchor, constant: 40),
       line.bottomAnchor.constraint(equalTo: locationAndLinksView.bottomAnchor, constant: -58),
-
       line.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
       line.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
       line.heightAnchor.constraint(equalToConstant: 100),
@@ -328,13 +328,12 @@ class ViewController: UIViewController {
       linkedInIconImageView.heightAnchor.constraint(equalToConstant: 18),      linkedInIconImageView.widthAnchor.constraint(equalToConstant: 18),
     ])
   }
-  
 
-  func setUpLinkedInLabel() {
+  func setUpLinkedInLinkLabel() {
     locationAndLinksView.addSubview(linkedInLinkLabel)
     
     NSLayoutConstraint.activate([
-      linkedInLinkLabel.topAnchor.constraint(equalTo: twitterLinkLabel.topAnchor, constant: 50),
+      linkedInLinkLabel.topAnchor.constraint(equalTo: twitterLinkLabel.topAnchor, constant: 28),
       linkedInLinkLabel.leadingAnchor.constraint(equalTo: linkedInIconImageView.leadingAnchor, constant: 25),
     ])
   }
@@ -343,7 +342,7 @@ class ViewController: UIViewController {
     view.addSubview(likesSectionView)
     
     NSLayoutConstraint.activate([
-      likesSectionView.topAnchor.constraint(equalTo: locationAndLinksView.bottomAnchor, constant: 10),
+      likesSectionView.topAnchor.constraint(equalTo: locationAndLinksView.bottomAnchor, constant: 20),
       likesSectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
       likesSectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
       likesSectionView.heightAnchor.constraint(equalToConstant: 60),
