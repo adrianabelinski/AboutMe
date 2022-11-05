@@ -54,7 +54,6 @@ class ViewController: UIViewController {
   let linksAndLocation: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    //label.text = "📍 Maple Grove, MN"
     let attributedString = NSMutableAttributedString(string: "📍 Maple Grove, MN")
     attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
     label.attributedText = attributedString
@@ -82,6 +81,22 @@ class ViewController: UIViewController {
     return view
   }()
   
+  let twitterIconImageView: UIImageView = {
+    let image = UIImage(named: "TwitterIcon")
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = image
+    return imageView
+  }()
+  
+  let linkedInIconImageView: UIImageView = {
+    let image = UIImage(named: "LinkedInIcon")
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = image
+    return imageView
+  }()
+  
   let introToCodingSection: UIView = {
     let view = UIView()
     view.backgroundColor = UIColor(named: "Sunny")
@@ -104,11 +119,9 @@ class ViewController: UIViewController {
   let introToCodingParagraph: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "I wanted to learn programming so I learned some Swift through online tutorials and games. I then purchased some books and finally, I joined a 10-week coding academy where I learned SwiftUI. I especially like the community of iOS developers, and I'm hoping that I can use both my eye for design and my coding skills to create fun and useful apps to be used by others around the world."
-    
-    /*let attributedString = NSMutableAttributedString(string: "I like iOS Development because...")
-    attributedString.addAttribute(.kern, value: 5, range: NSRange(location: 0, length: attributedString.length - 1))*/
-    
+    let attributedString = NSMutableAttributedString(string: "I wanted to learn programming so I learned some Swift through online tutorials and games. I then purchased some books and finally, I joined a 10-week coding academy where I learned SwiftUI. I especially like the community of iOS developers, and I'm hoping that I can use both my eye for design and my coding skills to create fun and useful apps to be used by others around the world.")
+    attributedString.addAttribute(.kern, value: 1, range: NSRange(location: 0, length: attributedString.length - 1))
+    label.attributedText = attributedString
     label.lineBreakMode = .byWordWrapping
     label.numberOfLines = 0
     label.font = UIFont(name: "Comfortaa-Bold", size: 10)
@@ -151,9 +164,9 @@ class ViewController: UIViewController {
     setUpName()
     setUpLinksColoredBlock()
     setUpLine()
-    //setUpTwitterIcon()
-   // setUpLinkedInIcon()
     setLikesSection()
+    setUpTwitterIconImageView()
+    setUpLinkedInIconImageView()
     setUpIntroToCodingSection()
     setUpIntroToCodingTitle()
     setUpIntroToCodingParagraph()
@@ -226,25 +239,6 @@ class ViewController: UIViewController {
       line.heightAnchor.constraint(equalToConstant: 100),
     ])
   }
-  /*
-  func SetUpTwitterIcon() {
-    view.addSubview(twitterIcon)
-    
-    NSLayoutConstraint.activate([
-      twitterIcon.topAnchor.constraint(equalTo: linksColoredBlock.topAnchor, constant: 40),
-      twitterIcon.bottomAnchor.constraint(equalTo: linksColoredBlock.bottomAnchor, constant: -58),
-
-      twitterIcon.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
-      twitterIcon.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-      twitterIcon.heightAnchor.constraint(equalToConstant: 100),
-    ])
-  }
-  
-  func SetUpTwitterIcon() {
-    view.addSubview(linkedInIcon)
-    
-  }
-   */
   
   func setLikesSection() {
     view.addSubview(likesSection)
@@ -254,6 +248,28 @@ class ViewController: UIViewController {
       likesSection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
       likesSection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
       likesSection.heightAnchor.constraint(equalToConstant: 60),
+    ])
+  }
+  
+  func setUpTwitterIconImageView() {
+    view.addSubview(twitterIconImageView)
+    
+    NSLayoutConstraint.activate([
+      twitterIconImageView.topAnchor.constraint(equalTo: likesSection.topAnchor, constant: 8),
+      twitterIconImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+      twitterIconImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -365),
+      twitterIconImageView.heightAnchor.constraint(equalToConstant: 18),
+    ])
+  }
+  
+  func setUpLinkedInIconImageView() {
+    view.addSubview(linkedInIconImageView)
+    
+    NSLayoutConstraint.activate([
+      linkedInIconImageView.topAnchor.constraint(equalTo: twitterIconImageView.bottomAnchor, constant: 10),
+      linkedInIconImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+      linkedInIconImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -365),
+      linkedInIconImageView.heightAnchor.constraint(equalToConstant: 18),
     ])
   }
   
